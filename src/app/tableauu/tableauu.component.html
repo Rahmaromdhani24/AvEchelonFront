@@ -1,0 +1,77 @@
+<nav >
+  <a href="#home" id="logo"></a>
+  <input type="checkbox" id="hamburger" />
+  <label for="hamburger">
+    <i class="fa-solid fa-bars"></i>
+  </label>
+  <ul>
+    <li>
+      <a routerLink="/accueil"><i class="far fa-address-book"></i> &nbsp;Personnels &nbsp; </a>
+    </li>
+    <li>
+      <a  routerLink="/av" class="active"><i class="far fa-chart-bar"></i> &nbsp; Avancements des Echelons &nbsp;</a>
+    </li>
+    <li>
+      <a routerLink="/historiques"><i class="far fa-clone"></i> &nbsp;Historiques&nbsp; </a>
+    </li>
+    <li>
+      <a href="#services"><i class="fa-solid fa-right-from-bracket"></i> &nbsp;Déconnexion </a>
+    </li>
+  </ul>
+</nav>
+ <div class="tab">
+<div class="container">
+  <div class="row mt-5">
+	  <div class="col-md-12">
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <th>
+              <input type="checkbox" (change)="selectAll($event)">
+            </th>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Ville</th>
+            <th>Qualification</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let personnel of service.PersonnelsData">
+            <td><input type="checkbox" [checked]="personnel.selected" (change)="toggleSelection(personnel)"></td>
+            <td>{{ personnel.mle }}</td>
+            <td>{{ personnel.nom }}</td>
+            <td>{{ personnel.prenom }}</td>
+            <td>{{ personnel.ville }}</td>
+            <td>{{ personnel.qualification }}</td>
+            <td>{{ personnel.age }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary" id="btnSuivant"data-toggle="modal" data-target="#exampleModal"  *ngIf="auMoinsUneSelection()">Suivant</button>
+	  </div>
+	</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
